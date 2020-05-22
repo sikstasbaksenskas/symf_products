@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product {{ product.title }}{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <h1>{{ product.title }}</h1>
+    {% if product %}
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.price }}  €</td>
+                    <td>
+                        {% if product.description %}
+                            {{ product.description }}
+                        {% else %}
+                            No description
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="/" class="btn btn-primary btn-sm">Add to cart</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <div>No product</div>
+    {% endif %}
+</div>
+{% endblock %}
