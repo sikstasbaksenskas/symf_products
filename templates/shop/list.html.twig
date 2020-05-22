@@ -8,7 +8,9 @@
     {% if products|length %}
         <ul>
             {% for product in products %}
-                <li>{{ product.title }}: {{ product.price }} €</li>
+                <li>{{ product.title }}: {{ product.price }} € 
+                    <a href="{{ path('shop_product', {'id': product.id }) }}"> >>Product page<< </a>
+                </li>
             {% endfor %}
         </ul>
     {% else %}

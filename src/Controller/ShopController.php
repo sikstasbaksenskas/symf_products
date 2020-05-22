@@ -22,4 +22,16 @@ class ShopController extends AbstractController
             'products' => $products
         ]);
     }
+
+    /**
+     * @Route("/product/{id}", name="product")
+     */
+    public function product(ProductRepository $productRepository, $id)
+    {
+        $product = $productRepository->find($id);
+
+        return $this->render('shop/product.html.twig', [
+            'product' => $product
+        ]);
+    }
 }
