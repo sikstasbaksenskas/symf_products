@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test Assignment{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <h1>Test Assignment</h1>
+    <p>
+        Create a simple e-commerce solution.
+        Do not put any effort into styling, basic formatting is enough.
+        Take a minimalistic approach, only add what's strictly necessary to complete the objectives.
+    </p>
+
+    <h2>Objectives</h2>
+    <ol>
+        <li><s>Create a product list page</s>;</li>
+        <li>Create a product page:
+            <ol>
+                <li>Displays title, price and description;</li>
+                <li>Accessible from the product list page.</li>
+            </ol>
+        </li>
+        <li>
+            Create a cart page:
+            <ol>
+                <li>Displays a list of added products with quantity, title and total price;</li>
+                <li>Allows removing products from the cart;</li>
+                <li>Allows changing product quantities;</li>
+                <li>Calculates and displays total cart price;</li>
+                <li>Allows adding to the cart from the product page;</li>
+                <li>Adding the same product to the cart more than once increases the quantity;</li>
+                <li>Top menu contains a link to the cart page, shows a total number of products in the cart;</li>
+                <li>Each visitor gets his own cart, available for the duration of the session.</li>
+            </ol>
+        </li>
+        <li>
+            Add currency selection:
+            <ol>
+                <li>Top menu contains currency selection;</li>
+                <li>Selected currency is remembered for the duration of the session;</li>
+                <li>All prices in the shop are displayed in the selected currency units;</li>
+                <li>Currency rates are fetched from <a href="https://exchangeratesapi.io/" target="_blank">https://exchangeratesapi.io/</a> API.</li>
+            </ol>
+        </li>
+        <li>
+            Extend the product to support options:
+            <ol>
+                <li>Products may have a number of different options (color, size, etc.), each option having one or more possible values;</li>
+                <li>Each product may have different options and option values;</li>
+                <li>Not all option combinations might be available (e.g. red shoes are only available in size 44, but yellow shoes are available in sizes 44 and 45);</li>
+                <li>Each unique product option combination has its own price (e.g. yellow shoes size 45 cost 99€, red shoes size 44 cost 81€, etc.);</li>
+                <li>If a product has options, product page shows a radio selection of all available option combinations together with prices;</li>
+                <li>Adding the same product with the same option selection to the cart more than once increases the quantity;</li>
+                <li>Products with different option selections are listed separately in the cart.</li>
+            </ol>
+        </li>
+    </ol>
+
+    <h2>Notes</h2>
+    <ol>
+        <li>Create fixtures for all entities to showcase the functionality (no admin pages needed);</li>
+        <li>Use Doctrine's migrations to change DB schema;</li>
+        <li>You may install extra composer packages;</li>
+        <li>Document notable things in the <code>README.md</code> file.</li>
+    </ol>
+</div>
+{% endblock %}
