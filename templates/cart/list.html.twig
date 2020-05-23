@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Cart {% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <h1>Cart</h1>
+    {% if products|length %}
+        <div class="row">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Product name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, product in products %}
+                        <tr>
+                            <td>{{ product['name'] }}</td>
+                            <td class="price_{{ key }}">{{ product['price'] }} €</td>
+                            <td>
+                                <a onclick="addItem({{ key }});" class="btn btn-success btn-sm">+</a>
+                                    <span class="quantity_{{ key }}">{{ product['quantity'] }}</span>
+                                <a href="/" class="btn btn-danger btn-sm">-</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="row float-right">
+            Total: <span class="total_price">{{ total['price'] }}</span> €
+        </div>
+    {% else %}
+        <div>No products</div>
+    {% endif %}
+</div>
+{% endblock %}
