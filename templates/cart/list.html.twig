@@ -17,20 +17,27 @@
                 </thead>
                 <tbody>
                     {% for key, product in products %}
-                        <tr>
-                            <td>{{ product['name'] }}</td>
-                            <td class="price_{{ key }}">{{ product['price'] }} €</td>
-                            <td>
-                                <a onclick="addItem({{ key }});" class="btn btn-success btn-sm">+</a>
-                                    <span class="quantity_{{ key }}">{{ product['quantity'] }}</span>
-                                <a href="/" class="btn btn-danger btn-sm">-</a>
-                            </td>
-                        </tr>
+                        {% if product['quantity'] > 0 %}
+                            <tr class="product_{{ key }}">
+                                <td>{{ product['name'] }}</td>
+                                <td class="price_{{ key }}">{{ product['price'] }} €</td>
+                                <td>
+                                    <a onclick="addItem({{ key }});" class="btn btn-success btn-sm">+</a>
+                                        <span class="quantity_{{ key }}">{{ product['quantity'] }}</span>
+                                    <a onclick="removeItem({{ key }});" class="btn btn-danger btn-sm">-</a>
+                                </td>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
         </div>
         <div class="row float-right">
+            {# {% if total['items'] == 0 %}
+                Total: <span class="total_price">0</span> €
+            {% else %}
+                Total: <span class="total_price">{{ total['price'] }}</span> €
+            {% endif %} #}
             Total: <span class="total_price">{{ total['price'] }}</span> €
         </div>
     {% else %}

@@ -96,7 +96,35 @@ class CartController extends AbstractController
     /**
      * @Route("/remove", name="remove")
      */
-    public function removeItem(Request $request)
+    public function removeItem(ProductRepository $productRepository, Request $request)
     {
+        //only for ajax
+        if (!$request->isXmlHttpRequest()) {
+            throw new HttpException(400, 'Only ajax requests');
+        }
+
+        //check if request exists
+        if (!isset($request->request)) {
+            throw new HttpException(400, 'Reqest does not exist');
+        }
+
+        //get product id from the request
+        $id = $request->request->get('id');
+        if (empty($id)) {
+            throw new \RuntimeException('ID variable is empty');
+        }
+
+        //get product
+        $product = $productRepository->find($id);
+        if (empty($product)) {
+            throw new \RuntimeException('There is no such product');
+        }
+
+        //add item to cart
+        $result = $this->cart->removeItem($product);
+        return $result;
+
+        //if something went wrong
+        throw new HttpException(400, 'Something went wrong');
     }
 }

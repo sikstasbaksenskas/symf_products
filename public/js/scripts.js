@@ -15,6 +15,24 @@ function addItem(id) {
         });
 }
 
+function removeItem(id) {
+    $.ajax({
+            type: "POST",
+            url: "/shop/cart/remove",
+            data: {
+                "id": id
+            }
+        })
+        .done(function (data) {
+            console.log(data);
+            if (data.status != 'OK') {
+                return;
+            }
+            updateAllData(id);
+        });
+}
+
+
 function updateAllData(id) {
     $.ajax({
             type: "POST",
@@ -24,6 +42,12 @@ function updateAllData(id) {
             if (data.status != 'OK') {
                 return;
             }
+            if (!data['products'][id]) {
+                $('.product_' + id).remove();
+                $('.total_price').html(data['total']['price'].toFixed(2));
+                $('.total_items').html(data['total']['items']);
+                return;
+            }
             if ($('.price_' + id)) {
                 $('.price_' + id).html(data['products'][id]['price']);
             }
@@ -31,7 +55,7 @@ function updateAllData(id) {
                 $('.quantity_' + id).html(data['products'][id]['quantity']);
             }
             if ($('.total_price')) {
-                $('.total_price').html(data['total']['price']);
+                $('.total_price').html(data['total']['price'].toFixed(2));
             }
             if ($('.total_items')) {
                 $('.total_items').html(data['total']['items']);
