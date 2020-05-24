@@ -44,7 +44,7 @@ function updateAllData(id) {
             }
             if (!data['products'][id]) {
                 $('.product_' + id).remove();
-                $('.total_price').html(data['total']['price'].toFixed(2));
+                $('.total_price').html(parseFloat(data['total']['price']).toFixed(2));
                 $('.total_items').html(data['total']['items']);
                 return;
             }
@@ -55,7 +55,7 @@ function updateAllData(id) {
                 $('.quantity_' + id).html(data['products'][id]['quantity']);
             }
             if ($('.total_price')) {
-                $('.total_price').html(data['total']['price'].toFixed(2));
+                $('.total_price').html(parseFloat(data['total']['price']).toFixed(2));
             }
             if ($('.total_items')) {
                 $('.total_items').html(data['total']['items']);
