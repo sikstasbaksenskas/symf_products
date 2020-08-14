@@ -1,6 +1,6 @@
 # Symfony E.shop cart implementation
 
-Assignment is based on [Symfony 5](https://symfony.com/doc/current/index.html). In order to run this
+App is based on [Symfony 5](https://symfony.com/doc/current/index.html). In order to run this
 locally, install [Symfony CLI](https://symfony.com/download),
 [Composer](https://getcomposer.org/download/) and run the following commands:
 
