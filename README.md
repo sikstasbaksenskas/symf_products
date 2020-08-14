@@ -1,4 +1,4 @@
-# Test Assignment
+# Symfony E.shop cart implementation
 
 Assignment is based on [Symfony 5](https://symfony.com/doc/current/index.html). In order to run this
 locally, install [Symfony CLI](https://symfony.com/download),
